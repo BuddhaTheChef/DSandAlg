@@ -148,7 +148,7 @@ function validAnagram(first, second) {
   }
   
   // {a: 0, n: 0, g: 0, r: 0, m: 0,s:1}
-  validAnagram('anagrams', 'nagaramm')
+  console.log(validAnagram('anagrams', 'nagaramm'))
 
 
   //////////////////Multiple Pointers///////////////////////
@@ -164,4 +164,21 @@ function validAnagram(first, second) {
 }
 
 
-sumZero([-4,-3,-2,-1,0,1,2,5])
+console.log(sumZero([-4,-3,-2,-1,0,1,2,5]))
+
+
+  //////////////////Count Unique Values///////////////////////
+function countUniqueValues(arr) {
+    if(arr.length === 0) return 0;
+    var i = 0;
+    for(var j = 1; j < arr.length; j++) {
+        if(arr[i] !== arr[j]) {
+            i++;
+            arr[i] = arr[j]
+        }
+        console.log(i,j)
+    }
+    return i + 1;
+}
+
+console.log(countUniqueValues([1,1,2,2,2,3,3,4,5,5,6,6,6,7]))
