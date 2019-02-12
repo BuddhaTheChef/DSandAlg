@@ -28,3 +28,21 @@ console.log(`Time Passed: ${(t2 -t1) / 1000}seconds`)
 
 
 
+// 5 STEPS to solve a problem? 
+
+// UNDERSTAND THE PROBLEM
+// -restate the problem in own words 
+// -what are the inputs that go into the problem
+// -what are the ouputs that should come out of the problem
+// -do i have enough info to solve the problem
+// -how should I label the improtant parts of the problem
+
+//EXPOLORE EXAMPLES
+// -start with simple examples
+// -progress to more complex examples 
+// -explore examples with empty inputs
+// -explore examples with Invalid inputs
+
+//BREAK IT DOWN
+// -write sudo code or write out problem
+// -check the different steps and possible variables in problem
