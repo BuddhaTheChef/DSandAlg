@@ -225,3 +225,55 @@ function maxSubarraySum(arr, num) {
   
   console.log(maxSubarraySum([2,6,9,2,1,8,5,6,3],3))
   
+
+  //Are there duplicates solution (Frequency Counter)
+function areThereDuplicates() {
+  let collection = {}
+  for(let val in arguments){
+    collection[arguments[val]] = (collection[arguments[val]] || 0) + 1
+  }
+  for(let key in collection){
+    if(collection[key] > 1) return true
+  }
+  return false;
+}
+
+
+
+//takes two numbers in array and trys to equal to second argument in function Solution
+function averagePair(arr, num){
+  let start = 0
+  let end = arr.length-1;
+  while(start < end){
+    let avg = (arr[start]+arr[end]) / 2 
+    if(avg === num) return true;
+    else if(avg < num) start++
+    else end--
+  }
+  return false;
+}
+
+
+
+//CHECKS WHETER ITEMS IN FIRST STRING APPEAR SOMEWHERE IN SECOND STRING
+
+//isSubsequence Solution - Iterative
+function isSubsequence(str1, str2) {
+  var i = 0;
+  var j = 0;
+  if (!str1) return true;
+  while (j < str2.length) {
+    if (str2[j] === str1[i]) i++;
+    if (i === str1.length) return true;
+    j++;
+  }
+  return false;
+}
+
+//isSubsequence Solution - Recursive but not O(1) Space
+function isSubsequence(str1, str2) {
+    if(str1.length === 0) return true
+    if(str2.length === 0) return false
+    if(str2[0] === str1[0]) return isSubsequence(str1.slice(1), str2.slice(1))  
+    return isSubsequence(str1, str2.slice(1))
+  }
