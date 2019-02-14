@@ -240,7 +240,7 @@ function areThereDuplicates() {
 
 
 
-//takes two numbers in array and trys to equal to second argument in function Solution
+//takes two numbers in array and trys to equal to second argument in function Solution (Multiple pointers)
 function averagePair(arr, num){
   let start = 0
   let end = arr.length-1;
@@ -257,7 +257,8 @@ function averagePair(arr, num){
 
 //CHECKS WHETER ITEMS IN FIRST STRING APPEAR SOMEWHERE IN SECOND STRING
 
-//isSubsequence Solution - Iterative
+
+//isSubsequence Solution - Iterative (Multiple pointers)
 function isSubsequence(str1, str2) {
   var i = 0;
   var j = 0;
@@ -270,6 +271,7 @@ function isSubsequence(str1, str2) {
   return false;
 }
 
+
 //isSubsequence Solution - Recursive but not O(1) Space
 function isSubsequence(str1, str2) {
     if(str1.length === 0) return true
@@ -277,3 +279,105 @@ function isSubsequence(str1, str2) {
     if(str2[0] === str1[0]) return isSubsequence(str1.slice(1), str2.slice(1))  
     return isSubsequence(str1, str2.slice(1))
   }
+
+
+  
+
+///////////Sliding window solutons////////////////
+
+//1.Given an array of integers and a number, write a function that finds the sum of a subarray with the length of the number passed to the function
+    // ex:([100,200,3000,400],2)//700
+    // ex: ([-3,4,0,-2,6,-1],2)//5
+    // ex:([2,3],3)//null
+
+ // maxSubArray Solution
+
+function maxSubarraySum(arr, num){
+    if (arr.length < num) return null;
+ 
+    let total = 0;
+    for (let i=0; i<num; i++){
+       total += arr[i];
+    }
+    let currentTotal = total;
+    for (let i = num; i < arr.length; i++) {
+       currentTotal += arr[i] - arr[i-num];
+       total = Math.max(total, currentTotal);
+    }
+    return total;
+}
+
+
+
+
+//2.Write a function that accepts two paramters(an array of positive integers and a positive integer
+//function should return the minimal length of a contiguous subarray of which the sum is greater than or equal to the 
+//integer passed to the function if there isn't one return 0;
+
+//ex:([2,3,1,2,4,3], 7) //2 because [4,3] is the smallest sub array
+//ex:([2,1,6,5,4],9) //2 because [5,4] is the smalles sub array
+//ex:([3,1,7,11,2,9,8,21,62,33,19],52) //1 because 62 is greater than 52
+//ex:([1,4,16,22,5,7,8,9,10],95) //0 
+
+//minSubArrayLen Solution
+
+function minSubArrayLen(nums, sum) {
+  let total = 0;
+  let start = 0;
+  let end = 0;
+  let minLen = Infinity;
+ 
+  while (start < nums.length) {
+    // if current window doesn't add up to the given sum then 
+		// move the window to right
+    if(total < sum && end < nums.length){
+      total += nums[end];
+			end++;
+    }
+    // if current window adds up to at least the sum given then
+		// we can shrink the window 
+    else if(total >= sum){
+      minLen = Math.min(minLen, end-start);
+			total -= nums[start];
+			start++;
+    } 
+    // current total less than required total but we reach the end, need this or else we'll be in an infinite loop 
+    else {
+      break;
+    }
+  }
+ 
+  return minLen === Infinity ? 0 : minLen;
+}
+
+
+
+
+
+
+
+//3.Write a function which accepts a string and returns the length of the longest substring with all distinct characters
+    // ex: ('') //0
+    // ex: ('bbbbbbb') //1
+    // ex: ('longestsubstring') //8
+
+
+//findLongestSubstring Solution
+
+function findLongestSubstring(str) {
+  let longest = 0;
+  let seen = {};
+  let start = 0;
+ 
+  for (let i = 0; i < str.length; i++) {
+    let char = str[i];
+    if (seen[char]) {
+      start = Math.max(start, seen[char]);
+    }
+    // index - beginning of substring + 1 (to include current in count)
+    longest = Math.max(longest, i - start + 1);
+    // store the index of the next char so as to not double count
+    seen[char] = i + 1;
+  }
+  return longest;
+}
