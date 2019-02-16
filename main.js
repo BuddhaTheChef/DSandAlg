@@ -504,4 +504,12 @@ function collectOddValues(arr){
 collectOddValues([1,2,3,4,5])
                                       
                                                               
-                              
+//////////////////////Recursive toy problems///////////////////
+
+function power(base, exp){
+  if(exp === 0) return 1;
+  return base * power(base,exp-1);
+}
+// power(2,0) // 1
+// power(2,2) // 4
+// power(2,4) // 16
