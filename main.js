@@ -804,3 +804,20 @@ function collectStrings(obj) {
 }
 
 //collectStrings(obj) // ["foo", "bar", "baz"])
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Linear search(FIND A GIVEN VALUE WITHIN AN ARRAY IF ITS TRUE PRINT INDEX ELSE PRINT -1)
+
+function linearSearch(arr, val){
+  // add whatever parameters you deem necessary - good luck!
+  for(var i = 0; i < arr.length; i++) {
+      if(arr[i] === val) {
+          return i
+      }
+  }
+   return -1
+}
+
+linearSearch([1,2,3,4,5],3) // 2
+linearSearch([0,2,4,5],3) //-1
