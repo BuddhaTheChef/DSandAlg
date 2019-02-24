@@ -860,7 +860,7 @@ function binarySearch(arr, elem) {
 binarySearch([2,5,6,9,13,15,28,30], 103)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-('checks to see if there is a match in the short and long string')
+//('checks to see if there is a match in the short and long string')
 
 function naiveSearch(long, short){
   var count = 0;
@@ -874,3 +874,32 @@ function naiveSearch(long, short){
 }
 
 naiveSearch("lorie loled", "lol")
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//.sort() functionallity 
+
+//sorts from least to greatest
+function compareNum(num1, num2) {
+  return num1 - num2
+}
+//sorts greatest to least
+function compareNum(num1, num2) {
+  return num2 - num1
+}
+
+
+//////[6,4,5,15,10].sort(compareNum)//////
+
+//sorts least to greatest characters
+function compareStr(str1, str2) {
+  return str1 - str2
+}
+//sorts greatest to least characters
+function compareStr(str1, str2) {
+  return str2 - str1
+}
+//////['hi','bye','wow','woooow'].sort(compareStr)/////
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
