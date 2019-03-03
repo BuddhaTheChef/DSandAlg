@@ -1104,6 +1104,7 @@ function pivot(arr, start = 0, end = arr.length - 1) {
 
 pivot([4,8,2,1,5,7,6,3])
 
+//time complexity 
 
 function quickSort(arr, left = 0, right = arr.length -1) {
   if(left < right) {
@@ -1117,3 +1118,25 @@ function quickSort(arr, left = 0, right = arr.length -1) {
 }
 
 console.log(quickSort([4,5,6,9,1,3,2]))
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Radix Sort
+//Helper methods
+function getDigit(num, i) {
+  return Math.floor(Math.abs(num) / Math.pow(10, i)) % 10;
+}
+
+function digitCount(num) {
+  if (num === 0) return 1;
+  return Math.floor(Math.log10(Math.abs(num))) + 1;
+}
+
+function mostDigits(nums) {
+  let maxDigits = 0;
+  for (let i = 0; i < nums.length; i++) {
+    maxDigits = Math.max(maxDigits, digitCount(nums[i]));
+  }
+  return maxDigits;
+}
+
+mostDigits([23,567,89,12234324,90])
